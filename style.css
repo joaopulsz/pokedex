@@ -5,10 +5,29 @@
   font-family: sans-serif;
 }
 
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 80px;
+  color: #555;
+  background-color: #ccc;
+  margin-bottom: 40px;
+  border-bottom: 4px solid #777;
+}
+
 #pokedex {
   width: 900px;
   height: 700px;
   background-color: rgb(218, 74, 74);
+  border-radius: 5%;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -22,6 +41,21 @@
   border: 2px solid black;
   width: 420px;
   height: 650px;
+}
+
+#search {
+  text-align: center;
+}
+
+#pokemon-input {
+  display: block;
+  width: 250px;
+  font-size: 1.2rem;
+}
+
+#pokemon-search-btn {
+  width: 150px;
+  margin-top: 20px;
 }
 
 #right-side {
@@ -38,6 +72,7 @@
   height: 400px;
   width: 350px;
   background-color: rgb(70, 63, 63);
+  border: 10px solid black;
 }
 
 #img-screen img {
@@ -46,13 +81,30 @@
 }
 
 #info-screen {
-  height: 300px;
+  height: 270px;
   width: 350px;
   background-color: rgb(70, 63, 63);
+  border: 10px solid black;
+}
+
+#info-screen p {
+  margin: 10px 5px;
+}
+
+#pokemonname {
+  text-align: center;
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin-bottom: 10px;
 }
 
 #evolutions {
-  height: 150px;
+  height: 200px;
   width: 350px;
   background-color: rgb(70, 63, 63);
+  border: 10px solid black;
+}
+
+footer {
+  margin-top: 40px;
 }
