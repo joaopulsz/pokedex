@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Web Pokédex</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <header>
+    <h1>Web Pokédex</h1>
+  </header>
+
+  <main>
+
+    <div id="pokedex">
+
+      <div id="left-side">
+
+        <form id="search">
+
+          <input id="pokemon-input" type="text" name="input" placeholder="Type Pokémon name here">
+          <button id="pokemon-search-btn" type="submit">Find Pokémon</button>
+
+        </form>
+
+        <div id="img-screen"></div>
+
+      </div>
+
+      <div id="right-side">
+
+        <div id="info-screen"></div>
+
+        <div id="evolutions"></div>
+
+      </div>
+
+    </div>
+
+  </main>
+
+  <footer>
+
+    <p>Data provided by <a href="https://pokeapi.co">PokéApi</a></p>
+
+  </footer>
+
+  <script src="app.js"></script>
+
+</body>
+
+</html>
