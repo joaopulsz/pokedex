@@ -77,13 +77,20 @@ form.addEventListener('submit', (e) => {
 });
 
 previousBtn.addEventListener('click', () => {
-  fetchPokemonData(Number(currentPokemon) - 1);
+  if (Number(currentPokemon) > 1) {
+    currentPokemon = Number(currentPokemon) - 1;
+    fetchPokemonData(currentPokemon);
+  }
 });
 
 nextBtn.addEventListener('click', () => {
-  fetchPokemonData(Number(currentPokemon) + 1);
+  if (Number(currentPokemon) < 898) {
+    currentPokemon = Number(currentPokemon) + 1;
+    fetchPokemonData(currentPokemon);
+  }
 });
 
 randomBtn.addEventListener('click', () => {
-  fetchPokemonData(Math.floor(Math.random() * 898) + 1);
+  currentPokemon = Math.floor(Math.random() * 898) + 1;
+  fetchPokemonData(currentPokemon);
 });
