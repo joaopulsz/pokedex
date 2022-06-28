@@ -8,8 +8,11 @@ form.addEventListener('submit', async (e) => {
 
   const userInput = form.elements.input.value;
 
-  const res = await fetch(`https://pokeapi.co/api/v2/pokemon/${userInput.toLowerCase()}`);
-  const pokemonData = await res.json();
+  const resPokemonData = await fetch(`https://pokeapi.co/api/v2/pokemon/${userInput.toLowerCase()}`);
+  const pokemonData = await resPokemonData.json();
+
+  const resEvolutionChain = await fetch(`https://pokeapi.co/api/v2/evolution-chain/${userInput.toLowerCase()}`);
+  const evolutionData = await resEvolutionChain.json();
 
   const pokemonImg = document.createElement('img');
   pokemonImg.setAttribute('src', pokemonData.sprites.front_default);
@@ -27,7 +30,6 @@ form.addEventListener('submit', async (e) => {
     pokemonType.innerText = `Type: ${type.charAt('0').toUpperCase()}${type.slice(1)}`;
   } else {
     const typeOne = pokemonData.types[0].type.name;
-    typeOne.charAt('0').toUpperCase();
     const typeTwo = pokemonData.types[1].type.name;
     pokemonType.innerText = `Types: ${typeOne.charAt('0').toUpperCase()}${typeOne.slice(1)} & ${typeTwo.charAt('0').toUpperCase()}${typeTwo.slice(1)}`;
   }
