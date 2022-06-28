@@ -1,7 +1,9 @@
 const form = document.querySelector('#search');
 const imgScreen = document.querySelector('#img-screen');
 const infoScreen = document.querySelector('#info-screen');
-const evolutions = document.querySelector('#evolutions');
+const previousBtn = document.querySelector('#previous');
+const nextBtn = document.querySelector('#next');
+const randomBtn = document.querySelector('#random');
 
 form.addEventListener('submit', async (e) => {
   e.preventDefault();
@@ -10,9 +12,6 @@ form.addEventListener('submit', async (e) => {
 
   const resPokemonData = await fetch(`https://pokeapi.co/api/v2/pokemon/${userInput.toLowerCase()}`);
   const pokemonData = await resPokemonData.json();
-
-  const resEvolutionChain = await fetch(`https://pokeapi.co/api/v2/evolution-chain/${userInput.toLowerCase()}`);
-  const evolutionData = await resEvolutionChain.json();
 
   const pokemonImg = document.createElement('img');
   pokemonImg.setAttribute('src', pokemonData.sprites.front_default);
