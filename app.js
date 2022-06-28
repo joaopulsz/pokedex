@@ -5,13 +5,24 @@ const previousBtn = document.querySelector('#previous');
 const nextBtn = document.querySelector('#next');
 const randomBtn = document.querySelector('#random');
 
-form.addEventListener('submit', async (e) => {
-  e.preventDefault();
+let currentPokemon;
 
-  const userInput = form.elements.input.value;
+const fetchPokemonData = async (input) => {
+  const res = await fetch(`https://pokeapi.co/api/v2/pokemon/${input}`);
+  const pokemonData = await res.json();
 
-  const resPokemonData = await fetch(`https://pokeapi.co/api/v2/pokemon/${userInput.toLowerCase()}`);
-  const pokemonData = await resPokemonData.json();
+  newPokemon(pokemonData);
+}
+
+const clearPokedex = () => {
+  imgScreen.innerHTML = '';
+  infoScreen.innerHTML = '';
+};
+
+const newPokemon = (pokemonData) => {
+  clearPokedex();
+
+  currentPokemon = pokemonData.id;
 
   const pokemonImg = document.createElement('img');
   pokemonImg.setAttribute('src', pokemonData.sprites.front_default);
@@ -20,7 +31,7 @@ form.addEventListener('submit', async (e) => {
 
   const pokemonName = document.createElement('p');
   pokemonName.setAttribute('id', 'pokemonname');
-  pokemonName.innerText = `${pokemonData.name.toUpperCase()}, #${pokemonData.id}`;
+  pokemonName.innerText = `${pokemonData.name.toUpperCase()}, #${currentPokemon}`;
   infoScreen.appendChild(pokemonName);
 
   const pokemonType = document.createElement('p');
@@ -55,6 +66,24 @@ form.addEventListener('submit', async (e) => {
   const pokemonBodyInfo = document.createElement('p');
   pokemonBodyInfo.innerText = `Height: ${pokemonData.height}, Weight: ${pokemonData.weight}`;
   infoScreen.appendChild(pokemonBodyInfo);
+};
 
+form.addEventListener('submit', (e) => {
+  e.preventDefault();
 
+  const userInput = form.elements.input.value;
+
+  fetchPokemonData(userInput.toLowerCase());
+});
+
+previousBtn.addEventListener('click', () => {
+  fetchPokemonData(Number(currentPokemon) - 1);
+});
+
+nextBtn.addEventListener('click', () => {
+  fetchPokemonData(Number(currentPokemon) + 1);
+});
+
+randomBtn.addEventListener('click', () => {
+  fetchPokemonData(Math.floor(Math.random() * 898) + 1);
 });
