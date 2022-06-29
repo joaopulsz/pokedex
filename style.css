@@ -64,6 +64,10 @@ header {
   margin-top: 20px;
 }
 
+#pokemon-search-btn:hover {
+  cursor: pointer;
+}
+
 #right-side {
   display: flex;
   flex-direction: column;
@@ -127,6 +131,10 @@ header {
   width: 100px;
   border: 1px solid black;
   border-radius: 50%;
+}
+
+#random {
+  background-color: rgb(237, 188, 25);
 }
 
 .button:hover {
